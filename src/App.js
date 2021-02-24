@@ -1,7 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import logo from './logo.svg';
 import './App.css';
-
+import axios from 'axios';
 
 const Demo = () => {
   const layout = {
@@ -19,7 +19,13 @@ const Demo = () => {
     },
   };
   const onFinish = (values) => {
-    console.log('Success:', values);
+    axios.post('http://172.16.41.4:3306/signin', {
+      name: '孙转转',
+      pass: '123456'
+    }).then(function (response) {
+      // handle success
+      console.log(response);
+    })
   };
 
   const onFinishFailed = (errorInfo) => {
